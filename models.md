@@ -9,3 +9,7 @@
 Sample encoder with 3 encoder layers
 
 ![](assets/encoder.png)
+
+## Decoder Block Architecture
+
+![](assets/decoder_block.png)
