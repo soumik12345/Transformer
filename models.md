@@ -17,3 +17,7 @@ Sample encoder with 3 encoder layers
 ## Decoder Architecture
 
 ![](assets/decoder.png)
+
+## Transformer Architecture
+
+![](assets/transformer.png)

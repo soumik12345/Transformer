@@ -49,7 +49,9 @@ def Decoder(vocab_size, n_layers, units, d_model, n_heads, dropout, name='Decode
     encoder_outputs = tf.keras.Input(shape=(None, d_model), name='Encoder_Outputs')
     look_ahead_mask = tf.keras.Input(shape=(1, None, None), name='Look_Ahead_Mask')
     padding_mask = tf.keras.Input(shape=(1, 1, None), name='Padding_Mask')
-    embeddings = tf.keras.layers.Embedding(vocab_size, d_model)(input_tensor)
+    embeddings = tf.keras.layers.Embedding(
+        vocab_size, d_model, name=name + "_Embedding"
+    )(input_tensor)
     embeddings *= tf.math.sqrt(tf.cast(d_model, tf.float32))
     embeddings = PositionalEncoding(
         vocab_size, d_model, name=name + "_Positional_Encoding"
