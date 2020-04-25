@@ -1,7 +1,7 @@
 import tensorflow as tf
 from .blocks.encoder import Encoder
 from .blocks.decoder import Decoder
-from .blocks.masking import (
+from .masking import (
     create_padding_mask,
     create_look_ahead_mask
 )
