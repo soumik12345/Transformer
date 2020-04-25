@@ -1,7 +1,7 @@
 import tensorflow as tf
-from .blocks.attention import MultiHeadAttention
-from .blocks.encoding import PositionalEncoding
-from .blocks.masking import create_padding_mask, create_look_ahead_mask
+from .attention import MultiHeadAttention
+from .encoding import PositionalEncoding
+from .masking import create_padding_mask, create_look_ahead_mask
 
 
 def Encoder(units, d_model, heads, dropout, name="Encoder_Model"):
