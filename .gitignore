@@ -3,3 +3,4 @@ env/
 test.py
 __pycache__/
 src/blocks/__pycache__/
+.DS_Store

@@ -4,11 +4,12 @@ from matplotlib import pyplot as plt
 
 class PositionalEncoding(tf.keras.layers.Layer):
 
-    def __init__(self, position, d_model):
-        super(PositionalEncoding, self).__init__()
+    def __init__(self, position, d_model, name):
+        super(PositionalEncoding, self).__init__(name=name)
         self.position = position
         self.d_model = d_model
         self.encoding = self.positional_encoding()
+        self.layer_name = name
 
     def get_angles(self, position, i):
         angles = 1 / tf.pow(10000, (2 * (i // 2)) / tf.cast(self.d_model, tf.float32))
@@ -27,6 +28,11 @@ class PositionalEncoding(tf.keras.layers.Layer):
 
     def call(self, inputs):
         return inputs + self.encoding[:, :tf.shape(inputs)[1], :]
+
+    def get_config(self):
+        base_config = super(PositionalEncoding, self).get_config()
+        base_config['name'] = self.layer_name
+        return base_config
 
 
 def visualize_pe(position=50, d_model=512):
