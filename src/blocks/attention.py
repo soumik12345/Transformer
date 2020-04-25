@@ -4,7 +4,7 @@ import tensorflow as tf
 class MultiHeadAttention(tf.keras.layers.Layer):
 
     def __init__(self, d_model, heads, name):
-        super(self, MultiHeadAttention).__init__(name=name)
+        super(MultiHeadAttention, self).__init__(name=name)
         self.d_model = d_model
         self.heads = heads
         self.depth = self.d_model // self.heads
@@ -12,6 +12,7 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         self.k_linear = tf.keras.layers.Dense(self.d_model)
         self.v_linear = tf.keras.layers.Dense(self.d_model)
         self.linear = tf.keras.layers.Dense(self.d_model)
+        self.block_name = name
 
     def split_heads(self, inputs, batch_size):
         inputs = tf.reshape(
@@ -45,3 +46,8 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         concat = tf.reshape(attention, (batch_size, -1, self.d_model))
         output = self.linear(concat)
         return output
+
+    def get_config(self):
+        base_config = super(MultiHeadAttention, self).get_config()
+        base_config['name'] = self.block_name
+        return base_config

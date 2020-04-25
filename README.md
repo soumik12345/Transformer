@@ -1,2 +1,3 @@
 # Transformer
 
+![](./assets/encoder.png)
