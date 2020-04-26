@@ -4,3 +4,4 @@ test.py
 __pycache__/
 src/blocks/__pycache__/
 .DS_Store
+notebooks/.ipynb_checkpoints/
